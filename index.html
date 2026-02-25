@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clavis — Tu dinero, bajo control</title>
+    <meta name="description" content="Clavis: Controlling as a Service para empresas que quieren crecer sin sorpresas. Diagnóstico financiero, dashboard a medida y reuniones mensuales de control.">
+    <meta property="og:title" content="Clavis — Tu dinero, bajo control">
+    <meta property="og:description" content="Control financiero sin complicaciones. Ahorros reales desde el primer mes.">
+    <meta property="og:url" content="https://clavis.es/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://clavis.es/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Clavis Controlling","url":"https://clavis.es","description":"Controlling as a Service para empresas que quieren crecer sin sorpresas.","contactPoint":{"@type":"ContactPoint","email":"traderargentino21@gmail.com","contactType":"sales"},"sameAs":["https://linkedin.com/company/clavis-controlling","https://instagram.com/clavis.controlling","https://tiktok.com/@clavis.controlling"]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Necesito cambiar mi software contable?","acceptedAnswer":{"@type":"Answer","text":"No. Clavis se conecta a lo que ya tienes: Holded, A3, Sage, Odoo, Excel..."}},{"@type":"Question","name":"¿Cuánto tiempo tarda en estar operativo?","acceptedAnswer":{"@type":"Answer","text":"El diagnóstico inicial está listo en 48 horas. El dashboard completo en la primera semana."}}]}
+    </script>
+    <style>
+        /* ══════════════════════════════════════════
+           DESIGN SYSTEM
+        ══════════════════════════════════════════ */
+        :root {
+            --bg:          #02040A;
+            --bg-2:        #060C18;
+            --surface:     #080F1E;
+            --surface-2:   #0C1628;
+            --surface-3:   #101E35;
+            --accent:      #2563EB;
+            --accent-soft: #3B82F6;
+            --accent-glow: rgba(37,99,235,0.2);
+            --accent-dim:  rgba(37,99,235,0.08);
+            --text:        #F1F5F9;
+            --text-2:      #CBD5E1;
+            --text-3:      #64748B;
+            --green:       #059669;
+            --green-soft:  #10B981;
+            --green-dim:   rgba(5,150,105,0.12);
+            --red:         #DC2626;
+            --red-dim:     rgba(220,38,38,0.1);
+            --border:      rgba(255,255,255,0.055);
+            --border-2:    rgba(255,255,255,0.1);
+            --r-sm: 10px;
+            --r-md: 16px;
+            --r-lg: 24px;
+            --r-xl: 32px;
+            --ease-spring:  cubic-bezier(0.16,1,0.3,1);
+            --ease-out:     cubic-bezier(0.0,0,0.2,1);
+            --ease-in-out:  cubic-bezier(0.45,0,0.15,1);
+            --shadow-sm:   0 1px 3px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.3);
+            --shadow-md:   0 4px 16px rgba(0,0,0,0.5),0 1px 4px rgba(0,0,0,0.3);
+            --shadow-lg:   0 20px 60px rgba(0,0,0,0.6),0 4px 20px rgba(0,0,0,0.4);
+            --shadow-accent: 0 8px 32px rgba(37,99,235,0.35),0 2px 8px rgba(37,99,235,0.2);
+        }
+
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:72px 72px;z-index:0;pointer-events:none}
+        h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-0.05em;line-height:1.05}
+        .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+
+        /* ── NAV ── */
+        nav{display:flex;justify-content:space-between;align-items:center;padding:0 5%;height:64px;position:fixed;width:100%;top:0;background:rgba(2,4,10,0.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border);z-index:100;transition:background 0.4s var(--ease-out)}
+        .nav-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.25rem;color:var(--text);display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-0.05em}
+        .nav-logo-mark{width:30px;height:30px;background:var(--accent);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-accent);flex-shrink:0}
+        .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text-3);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:-0.01em;transition:color 0.2s var(--ease-out)}
+        .nav-links a:hover{color:var(--text)}
+
+        /* ── BUTTONS ── */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--accent);color:white;border:none;padding:0 1.25rem;height:40px;border-radius:100px;font-weight:600;font-family:inherit;font-size:0.875rem;letter-spacing:-0.01em;cursor:pointer;text-decoration:none;transition:transform 0.3s var(--ease-spring),box-shadow 0.3s var(--ease-spring),opacity 0.2s;white-space:nowrap;min-height:44px}
+        .btn:hover{transform:translateY(-1px) scale(1.01);box-shadow:var(--shadow-accent)}
+        .btn:active{transform:scale(0.98)}
+        .btn:disabled{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none}
+        .btn-lg{height:52px;padding:0 2rem;font-size:1rem;font-weight:700}
+        .btn-ghost{background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-2)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.09);border-color:var(--border-2);color:var(--text);box-shadow:none}
+        .btn-outline{background:transparent;border:1px solid rgba(37,99,235,0.35);color:var(--accent-soft)}
+        .btn-outline:hover{background:var(--accent-dim);border-color:rgba(37,99,235,0.6);box-shadow:0 0 20px rgba(37,99,235,0.15)}
+
+        /* ── HERO ── */
+        .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 2rem 80px;position:relative;overflow:hidden}
+        .hero-aurora{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .aurora-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 20s ease-in-out infinite alternate}
+        .aurora-orb-1{width:700px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.22) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);animation-duration:25s}
+        .aurora-orb-2{width:400px;height:400px;background:radial-gradient(ellipse,rgba(99,102,241,0.13) 0%,transparent 70%);top:30%;right:-100px;animation-duration:18s;animation-direction:alternate-reverse}
+        .aurora-orb-3{width:350px;height:350px;background:radial-gradient(ellipse,rgba(14,165,233,0.1) 0%,transparent 70%);bottom:10%;left:-50px;animation-duration:22s}
+        @keyframes drift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-15px) scale(1.05)}66%{transform:translate(-10px,10px) scale(0.97)}100%{transform:translate(15px,5px) scale(1.03)}}
+        .hero>*{position:relative;z-index:1}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--accent-soft);font-weight:600;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:2rem;opacity:0;animation:revealUp 0.8s var(--ease-spring) 0.1s forwards}
+        .eyebrow-dot{width:5px;height:5px;background:var(--accent-soft);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.75)}}
+        .hero-title{font-size:clamp(3.5rem,9vw,6.5rem);font-weight:800;letter-spacing:-0.06em;line-height:0.97;margin-bottom:1.75rem;max-width:900px;opacity:0;animation:revealUp 0.9s var(--ease-spring) 0.2s forwards}
+        .hero-title em{font-style:normal;background:linear-gradient(140deg,#60A5FA 0%,#3B82F6 40%,#818CF8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-sub{color:var(--text-3);font-size:1.2rem;font-weight:400;max-width:520px;margin:0 auto 2.75rem;line-height:1.6;letter-spacing:-0.01em;opacity:0;animation:revealUp 0.9s var(--ease-spring) 0.3s forwards}
+        .hero-actions{display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem;opacity:0;animation:revealUp 0.9s var(--ease-spring) 0.42s forwards}
+        .hero-proof{display:flex;align-items:center;gap:0.875rem;justify-content:center;color:var(--text-3);font-size:0.825rem;letter-spacing:-0.01em;opacity:0;animation:revealUp 0.9s var(--ease-spring) 0.55s forwards}
+        .avatar-stack{display:flex}
+        .avatar-stack span{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-7px;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:white;flex-shrink:0}
+        .avatar-stack span:first-child{margin-left:0}
+        @keyframes revealUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ── CALCULATOR ── */
+        .calc-section{padding:0 2rem 140px;position:relative;z-index:1}
+        .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:3.5rem;max-width:720px;margin:0 auto;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+        .calc-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.6) 50%,transparent)}
+        .step-label{display:inline-flex;align-items:center;gap:6px;color:var(--accent-soft);font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1rem}
+        .calc-step>h2{font-size:1.75rem;margin-bottom:2.25rem;letter-spacing:-0.05em}
+        .slider-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.25rem}
+        .slider-label-text{font-size:0.825rem;color:var(--text-3);font-weight:500;letter-spacing:-0.01em}
+        .slider-value{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text)}
+        input[type="range"]{width:100%;height:4px;background:var(--surface-3);border-radius:2px;appearance:none;outline:none;cursor:pointer;margin:0 0 0.625rem}
+        input[type="range"]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;background:white;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.5),0 0 0 2px var(--accent);transition:transform 0.2s var(--ease-spring)}
+        input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+        .slider-range{display:flex;justify-content:space-between;color:var(--text-3);font-size:0.75rem;font-weight:500}
+        .control-options{display:flex;flex-direction:column;gap:0.625rem;margin-bottom:1.75rem;border:none;padding:0}
+        .control-btn{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r-md);padding:1.125rem 1.375rem;cursor:pointer;transition:border-color 0.25s var(--ease-out),background 0.25s var(--ease-out),transform 0.3s var(--ease-spring);text-align:left;font-family:inherit;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;min-height:44px}
+        .control-btn:hover{border-color:rgba(37,99,235,0.35);background:var(--accent-dim);transform:translateX(3px)}
+        .control-btn-label{font-weight:600;font-size:0.9rem;letter-spacing:-0.02em}
+        .control-btn-sub{color:var(--text-3);font-size:0.78rem;margin-top:2px;font-weight:400}
+        .control-btn-pct{color:var(--accent-soft);font-weight:800;font-size:1rem;font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-0.03em;white-space:nowrap}
+        .results-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;margin-bottom:2rem}
+        .result-card{background:var(--surface-2);border:1px solid var(--border);padding:1.5rem;border-radius:var(--r-md)}
+        .result-card.primary{border-color:rgba(37,99,235,0.25);background:linear-gradient(135deg,rgba(37,99,235,0.08) 0%,rgba(37,99,235,0.04) 100%)}
+        .result-card-label{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:0.625rem;display:flex;align-items:center;gap:5px}
+        .result-card-val{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.05em;line-height:1;display:block;margin-bottom:4px}
+        .result-card-val.blue{color:var(--accent-soft)}
+        .result-card-val.green{color:var(--green-soft)}
+        .result-card-hint{font-size:0.72rem;color:var(--text-3);font-weight:400}
+        .results-footnote{font-size:0.75rem;color:var(--text-3);text-align:center;line-height:1.5}
+
+        /* ── STATS ── */
+        .stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 0;position:relative;z-index:1}
+        .stats .container{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+        .stat{text-align:center;padding:0 2rem}
+        .stat+.stat{border-left:1px solid var(--border)}
+        .stat-num{font-family:'Bricolage Grotesque',sans-serif;font-size:3.25rem;font-weight:800;letter-spacing:-0.06em;line-height:1;color:var(--text);margin-bottom:0.5rem}
+        .stat-label{font-size:0.85rem;color:var(--text-3);font-weight:400;letter-spacing:-0.01em}
+
+        /* ── SECTION BASE ── */
+        .section{padding:140px 0;position:relative;z-index:1}
+        .eyebrow{display:inline-block;color:var(--accent-soft);font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1.25rem}
+        .section-h{font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-0.055em;margin-bottom:1rem;max-width:560px}
+        .section-p{color:var(--text-3);font-size:1.05rem;max-width:480px;line-height:1.65;letter-spacing:-0.01em;font-weight:400}
+
+        /* ── HOW IT WORKS ── */
+        .how-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-top:5rem}
+        .steps{display:flex;flex-direction:column}
+        .step{display:flex;gap:1.25rem;padding:1.75rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity 0.2s var(--ease-out)}
+        .step:first-child{padding-top:0}
+        .step:last-child{border-bottom:none;padding-bottom:0}
+        .step-n{width:36px;height:36px;border-radius:var(--r-sm);background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.78rem;color:var(--text-3);flex-shrink:0;transition:background 0.3s var(--ease-out),border-color 0.3s,color 0.3s,box-shadow 0.3s;font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-0.02em}
+        .step.active .step-n{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 0 0 4px rgba(37,99,235,0.15)}
+        .step h3{font-size:0.95rem;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.3rem}
+        .step p{color:var(--text-3);font-size:0.85rem;line-height:1.6;font-weight:400}
+        .dash-mockup{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow-lg);position:sticky;top:100px;overflow:hidden}
+        .dash-mockup::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.5) 50%,transparent)}
+        .dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+        .dash-title{font-size:0.85rem;font-weight:700;letter-spacing:-0.03em}
+        .live-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.68rem;font-weight:600;color:var(--green-soft);background:var(--green-dim);border:1px solid rgba(16,185,129,0.15);padding:0.2rem 0.6rem;border-radius:100px;letter-spacing:0.04em}
+        .live-dot{width:5px;height:5px;background:var(--green-soft);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+        .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.625rem;margin-bottom:1.5rem}
+        .kpi{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:0.875rem}
+        .kpi-label{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:0.35rem}
+        .kpi-val{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.04em}
+        .chart-label{font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:0.75rem}
+        .bar-chart{display:flex;align-items:flex-end;gap:5px;height:72px;padding-bottom:20px}
+        .bar{flex:1;border-radius:4px 4px 0 0;background:var(--surface-3);border:1px solid var(--border);position:relative}
+        .bar.highlight{background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px rgba(37,99,235,0.4)}
+        .bar-l{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.58rem;color:var(--text-3);white-space:nowrap}
+        .dash-alert{display:flex;align-items:center;gap:0.75rem;margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+        .alert-icon{width:30px;height:30px;border-radius:var(--r-sm);background:var(--green-dim);border:1px solid rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;font-size:0.78rem;flex-shrink:0}
+        .alert-text-main{font-size:0.78rem;font-weight:600;letter-spacing:-0.01em}
+        .alert-text-sub{font-size:0.68rem;color:var(--text-3)}
+
+        /* ── SERVICES ── */
+        .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+        .service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2.25rem;position:relative;overflow:hidden;transition:transform 0.35s var(--ease-spring),border-color 0.25s}
+        .service-card:hover{transform:translateY(-3px);border-color:var(--border-2)}
+        .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gradient-color,var(--accent)) 50%,transparent);opacity:0;transition:opacity 0.3s}
+        .service-card:hover::before{opacity:1}
+        .service-icon{width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.5rem;flex-shrink:0}
+        .service-card h3{font-size:1.1rem;letter-spacing:-0.04em;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;font-weight:700}
+        .service-card p{color:var(--text-3);font-size:0.875rem;line-height:1.65;letter-spacing:-0.01em;font-weight:400;margin-bottom:1.5rem}
+        .service-tag{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;padding:0.2rem 0.625rem;border-radius:100px;letter-spacing:0.04em}
+
+        /* ── ABOUT / QUIENES SOMOS ── */
+        .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;margin-top:5rem}
+        .about-values{display:flex;flex-direction:column;gap:0;margin-top:3rem}
+        .value-item{display:flex;gap:1rem;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+        .value-item:first-child{padding-top:0}
+        .value-item:last-child{border-bottom:none;padding-bottom:0}
+        .value-icon{width:36px;height:36px;border-radius:var(--r-sm);background:var(--accent-dim);border:1px solid rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px}
+        .value-item h4{font-size:0.92rem;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.25rem}
+        .value-item p{color:var(--text-3);font-size:0.83rem;line-height:1.6;font-weight:400}
+
+        /* Team visual */
+        .about-visual{position:relative}
+        .team-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;box-shadow:var(--shadow-lg)}
+        .team-card::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.4) 50%,transparent)}
+        .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+        .team-member{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;text-align:center;transition:border-color 0.2s}
+        .team-member:hover{border-color:var(--border-2)}
+        .team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:white}
+        .team-name{font-size:0.875rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:2px}
+        .team-role{font-size:0.72rem;color:var(--text-3)}
+        .team-stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+        .team-stat{text-align:center}
+        .team-stat-n{font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.05em;color:var(--accent-soft)}
+        .team-stat-l{font-size:0.68rem;color:var(--text-3);letter-spacing:0.02em}
+
+        /* ── BLOG ── */
+        .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+        .blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform 0.35s var(--ease-spring),border-color 0.25s}
+        .blog-card:hover{transform:translateY(-3px);border-color:var(--border-2)}
+        .blog-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+        .blog-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(8,15,30,0.8))}
+        .blog-category{position:absolute;top:1rem;left:1rem;z-index:1;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:0.2rem 0.6rem;border-radius:100px}
+        .blog-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+        .blog-meta{font-size:0.72rem;color:var(--text-3);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;letter-spacing:-0.01em}
+        .blog-meta span{opacity:0.4}
+        .blog-title{font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-0.03em;line-height:1.35;margin-bottom:0.75rem}
+        .blog-excerpt{font-size:0.825rem;color:var(--text-3);line-height:1.6;letter-spacing:-0.01em;flex:1}
+        .blog-cta{display:flex;align-items:center;gap:6px;margin-top:1.25rem;font-size:0.78rem;font-weight:600;color:var(--accent-soft);letter-spacing:-0.01em;transition:gap 0.2s var(--ease-spring)}
+        .blog-card:hover .blog-cta{gap:10px}
+
+        /* ── PRICING ── */
+        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+        .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2.25rem;position:relative;transition:transform 0.35s var(--ease-spring),border-color 0.25s}
+        .pricing-card:hover{transform:translateY(-3px)}
+        .pricing-card.featured{border-color:rgba(37,99,235,0.3);background:linear-gradient(160deg,var(--surface-2) 0%,var(--surface) 100%)}
+        .pricing-card.featured::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--accent) 50%,transparent);border-radius:var(--r-lg) var(--r-lg) 0 0}
+        .featured-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;font-size:0.68rem;font-weight:700;padding:0.2rem 0.75rem;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;box-shadow:var(--shadow-accent)}
+        .plan-name{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-3);margin-bottom:1.25rem}
+        .plan-price{font-family:'Bricolage Grotesque',sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-0.05em;line-height:1}
+        .plan-price sup{font-size:1.25rem;vertical-align:super;margin-right:2px}
+        .plan-period{color:var(--text-3);font-size:0.8rem;margin-top:0.35rem;margin-bottom:1.75rem;letter-spacing:-0.01em}
+        .plan-divider{height:1px;background:var(--border);margin-bottom:1.75rem}
+        .plan-features{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem}
+        .plan-features li{display:flex;align-items:flex-start;gap:0.625rem;font-size:0.875rem;color:var(--text-2);letter-spacing:-0.01em}
+        .plan-features li .ck{color:var(--green-soft);flex-shrink:0;margin-top:1px;font-size:0.9rem}
+
+        /* ── TESTIMONIALS ── */
+        .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+        .t-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;transition:border-color 0.25s,transform 0.35s var(--ease-spring)}
+        .t-card:hover{border-color:var(--border-2);transform:translateY(-2px)}
+        .t-stars{color:#F59E0B;font-size:0.8rem;letter-spacing:3px;margin-bottom:1rem}
+        .t-quote{color:var(--text-2);font-size:0.875rem;line-height:1.7;margin-bottom:1.5rem;letter-spacing:-0.01em;font-weight:400}
+        .t-author{display:flex;align-items:center;gap:0.75rem}
+        .t-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:white;flex-shrink:0}
+        .t-name{font-weight:700;font-size:0.875rem;letter-spacing:-0.02em}
+        .t-role{color:var(--text-3);font-size:0.75rem}
+
+        /* ── FAQ ── */
+        .faq-wrap{max-width:680px;margin:4rem auto 0}
+        .faq-item{border-bottom:1px solid var(--border)}
+        .faq-q{width:100%;background:none;border:none;color:var(--text);font-family:inherit;font-size:0.95rem;font-weight:600;letter-spacing:-0.02em;text-align:left;padding:1.375rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s}
+        .faq-q:hover{color:var(--accent-soft)}
+        .faq-plus{width:22px;height:22px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;transition:transform 0.35s var(--ease-spring),background 0.25s,border-color 0.25s;color:var(--text-3)}
+        .faq-item.open .faq-plus{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:white}
+        .faq-a{color:var(--text-3);font-size:0.875rem;line-height:1.75;letter-spacing:-0.01em;max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease-in-out),padding 0.35s}
+        .faq-item.open .faq-a{max-height:320px;padding-bottom:1.5rem}
+
+        /* ── CONTACT SECTION ── */
+        .contact-section{padding:140px 2rem;position:relative;z-index:1}
+        .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+        .contact-info{position:sticky;top:100px}
+        .contact-info h2{font-size:clamp(2rem,4vw,2.75rem);letter-spacing:-0.055em;margin-bottom:1.25rem}
+        .contact-info p{color:var(--text-3);font-size:1.05rem;line-height:1.65;letter-spacing:-0.01em;margin-bottom:2.5rem}
+        .contact-detail{display:flex;align-items:center;gap:0.875rem;margin-bottom:1.25rem}
+        .contact-icon{width:40px;height:40px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+        .contact-detail-text{font-size:0.875rem;font-weight:600;letter-spacing:-0.02em;color:var(--text-2)}
+        .contact-detail-sub{font-size:0.75rem;color:var(--text-3)}
+        .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:3rem;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+        .contact-card::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.6) 50%,transparent)}
+
+        /* Form */
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem}
+        .field{display:flex;flex-direction:column;gap:0.4rem}
+        .field.span-2{grid-column:1/-1}
+        .field label{font-size:0.75rem;font-weight:600;color:var(--text-3);letter-spacing:-0.01em}
+        .field-input{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:0.75rem 0.875rem;color:var(--text);font-family:inherit;font-size:0.875rem;letter-spacing:-0.01em;transition:border-color 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out);outline:none;width:100%}
+        .field-input:focus{border-color:rgba(37,99,235,0.5);box-shadow:0 0 0 3px rgba(37,99,235,0.12)}
+        .field-input[aria-invalid="true"]{border-color:rgba(220,38,38,0.5);box-shadow:0 0 0 3px var(--red-dim)}
+        .field-input::placeholder{color:var(--text-3);opacity:0.6}
+        select.field-input option{background:#0C1628}
+        .field-error{font-size:0.72rem;color:#F87171;font-weight:500}
+        .form-status{display:none;align-items:center;gap:0.75rem;padding:0.875rem 1rem;border-radius:var(--r-sm);font-size:0.825rem;font-weight:500;letter-spacing:-0.01em;margin-bottom:1rem}
+        .form-status.error{background:var(--red-dim);border:1px solid rgba(220,38,38,0.2);color:#FCA5A5}
+        .form-status.loading{background:var(--accent-dim);border:1px solid rgba(37,99,235,0.2);color:#93C5FD}
+        .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.25);border-top-color:white;border-radius:50%;animation:spin 0.65s linear infinite;flex-shrink:0}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .form-privacy{text-align:center;font-size:0.72rem;color:var(--text-3);margin-top:1rem;letter-spacing:-0.01em}
+        .form-success{display:none;text-align:center;padding:2rem 0}
+        .success-icon{width:56px;height:56px;background:var(--green-dim);border:1.5px solid var(--green-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1.5rem}
+        .form-success h3{font-size:1.375rem;letter-spacing:-0.04em;margin-bottom:0.5rem}
+        .form-success p{color:var(--text-3);font-size:0.875rem;line-height:1.6}
+
+        /* ── FOOTER ── */
+        footer{border-top:1px solid var(--border);padding:3.5rem 0;position:relative;z-index:1}
+        .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+        .footer-brand p{color:var(--text-3);font-size:0.825rem;line-height:1.65;margin-top:1rem;max-width:240px;letter-spacing:-0.01em}
+        .footer-col h4{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:1.25rem}
+        .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+        .footer-col ul a{color:var(--text-3);text-decoration:none;font-size:0.825rem;letter-spacing:-0.01em;transition:color 0.2s}
+        .footer-col ul a:hover{color:var(--text-2)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+        .footer-copy{color:var(--text-3);font-size:0.775rem;letter-spacing:-0.01em}
+
+        /* Social icons */
+        .social-links{display:flex;align-items:center;gap:0.75rem}
+        .social-link{width:38px;height:38px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.25s var(--ease-out),border-color 0.25s,transform 0.3s var(--ease-spring);flex-shrink:0}
+        .social-link:hover{background:var(--surface-3);border-color:var(--border-2);transform:translateY(-2px)}
+        .social-link svg{width:18px;height:18px;fill:var(--text-3);transition:fill 0.2s}
+        .social-link:hover svg{fill:var(--text-2)}
+        .social-link.linkedin:hover{border-color:rgba(10,102,194,0.4);background:rgba(10,102,194,0.08)}
+        .social-link.linkedin:hover svg{fill:#60A5FA}
+        .social-link.instagram:hover{border-color:rgba(225,48,108,0.3);background:rgba(225,48,108,0.07)}
+        .social-link.instagram:hover svg{fill:#F472B6}
+        .social-link.tiktok:hover{border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.05)}
+        .social-link.tiktok:hover svg{fill:white}
+
+        /* ── SCROLL REVEAL ── */
+        .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s var(--ease-spring),transform 0.7s var(--ease-spring)}
+        .reveal.visible{opacity:1;transform:none}
+
+        /* ── UTILS ── */
+        .hidden{display:none!important}
+        :focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1024px){
+            .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+        }
+        @media(max-width:960px){
+            .how-layout,.about-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}
+            .about-layout{gap:2rem}
+            .contact-info{position:relative;top:auto}
+            .services-grid,.pricing-grid,.t-grid,.blog-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}
+            .results-grid,.form-row{grid-template-columns:1fr}
+            .stats .container{grid-template-columns:1fr}
+            .stat+.stat{border-left:none;border-top:1px solid var(--border);padding-top:2rem;margin-top:2rem}
+            nav{padding:0 1.25rem}
+            .nav-links{display:none}
+            .section{padding:100px 0}
+            .contact-section{padding:100px 2rem}
+        }
+        @media(max-width:640px){
+            .calc-card{padding:2rem 1.5rem}
+            .hero-title{font-size:clamp(2.75rem,10vw,4rem)}
+            .footer-top{grid-template-columns:1fr}
+            .team-grid{grid-template-columns:1fr 1fr}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav">
+    <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M3 9L7.5 13.5L15 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        Clavis
+    </a>
+    <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#blog">Blog</a></li>
+    </ul>
+    <a href="#contacto" class="btn" style="height:36px;font-size:0.825rem;">Agendar llamada →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero-aurora">
+        <div class="aurora-orb aurora-orb-1"></div>
+        <div class="aurora-orb aurora-orb-2"></div>
+        <div class="aurora-orb aurora-orb-3"></div>
+    </div>
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Controlling as a Service</div>
+    <h1 class="hero-title">Tu dinero,<br><em>bajo control.</em></h1>
+    <p class="hero-sub">Control financiero sencillo para empresas que quieren crecer. Sin sorpresas.</p>
+    <div class="hero-actions">
+        <a href="#contacto" class="btn btn-lg">Empezar ahora →</a>
+        <a href="#servicios" class="btn btn-lg btn-ghost">Ver servicios</a>
+    </div>
+    <div class="hero-proof">
+        <div class="avatar-stack"><span>MR</span><span>LP</span><span>AS</span><span>+</span></div>
+        <span>Más de <strong style="color:var(--text-2);font-weight:600;">80 empresas</strong> ya confían en Clavis</span>
+    </div>
+</section>
+
+<!-- ══ CALCULATOR ══ -->
+<section class="calc-section">
+    <div style="max-width:720px;margin:0 auto;">
+        <div class="calc-card">
+            <div id="step-1">
+                <span class="step-label"><span style="color:var(--text-3);font-size:0.68rem;">01</span>Paso 1 de 2</span>
+                <h2>¿Cuál es tu facturación anual?</h2>
+                <div style="margin-bottom:2rem;">
+                    <div class="slider-label">
+                        <span class="slider-label-text">Facturación aproximada</span>
+                        <span class="slider-value" id="revenue-val">500.000 €</span>
+                    </div>
+                    <input type="range" id="revenue" min="100000" max="5000000" step="50000" value="500000"
+                        aria-label="Facturación anual" aria-valuemin="100000" aria-valuemax="5000000"
+                        aria-valuenow="500000" aria-valuetext="500000 euros">
+                    <div class="slider-range"><span>100.000 €</span><span>5.000.000 €</span></div>
+                </div>
+                <button class="btn btn-lg" onclick="nextStep()">Siguiente →</button>
+            </div>
+            <div id="step-2" class="hidden">
+                <span class="step-label"><span style="color:var(--text-3);font-size:0.68rem;">02</span>Paso 2 de 2</span>
+                <h2>¿Qué nivel de control tienes hoy?</h2>
+                <fieldset class="control-options" aria-label="Nivel de control financiero">
+                    <button class="control-btn" type="button" onclick="calculate(0.10)">
+                        <div><div class="control-btn-label">Tengo control, pero quiero más</div><div class="control-btn-sub">Hojas de cálculo, reportes puntuales</div></div>
+                        <span class="control-btn-pct">~10%</span>
+                    </button>
+                    <button class="control-btn" type="button" onclick="calculate(0.15)">
+                        <div><div class="control-btn-label">Me faltan reportes claros</div><div class="control-btn-sub">Datos dispersos, decisiones lentas</div></div>
+                        <span class="control-btn-pct">~15%</span>
+                    </button>
+                    <button class="control-btn" type="button" onclick="calculate(0.25)">
+                        <div><div class="control-btn-label">Siento que pierdo dinero</div><div class="control-btn-sub">Sin visibilidad sobre márgenes ni cash</div></div>
+                        <span class="control-btn-pct">+25%</span>
+                    </button>
+                </fieldset>
+                <button class="btn btn-ghost" type="button" onclick="prevStep()" style="font-size:0.825rem;height:40px;padding:0 1rem;">← Volver</button>
+            </div>
+            <div id="step-results" class="hidden">
+                <h2 style="margin-bottom:0.5rem;">Tu potencial de impacto</h2>
+                <p style="color:var(--text-3);font-size:0.825rem;margin-bottom:2rem;letter-spacing:-0.01em;">Basado en resultados reales de clientes Clavis</p>
+                <div class="results-grid">
+                    <div class="result-card primary">
+                        <div class="result-card-label">💰 Ahorro anual</div>
+                        <span class="result-card-val blue" id="res-ahorro">—</span>
+                        <div class="result-card-hint">En costes ocultos y fugas</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-label">📅 Runway extra</div>
+                        <span class="result-card-val green" id="res-runway">—</span>
+                        <div class="result-card-hint">Meses de caja despejada</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-label">📈 Margen potencial</div>
+                        <span class="result-card-val" id="res-margen">—</span>
+                        <div class="result-card-hint">Incremento estimado</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-card-label">⏱ Tiempo/mes liberado</div>
+                        <span class="result-card-val" id="res-tiempo">—</span>
+                        <div class="result-card-hint">Horas de gestión</div>
+                    </div>
+                </div>
+                <p class="results-footnote">Estimaciones conservadoras basadas en benchmarks del sector. Los resultados reales varían.</p>
+                <div style="display:flex;gap:0.75rem;margin-top:1.75rem;flex-wrap:wrap;">
+                    <a href="#contacto" class="btn btn-lg" style="flex:1;min-width:180px;">Quiero estos resultados →</a>
+                    <button class="btn btn-ghost" type="button" onclick="resetCalc()" style="font-size:0.825rem;height:52px;padding:0 1.25rem;">Recalcular</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats">
+    <div class="container">
+        <div class="stat reveal"><div class="stat-num">+80</div><div class="stat-label">Empresas activas</div></div>
+        <div class="stat reveal"><div class="stat-num">14%</div><div class="stat-label">Ahorro medio en costes</div></div>
+        <div class="stat reveal"><div class="stat-num">48h</div><div class="stat-label">Tiempo de activación</div></div>
+    </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="section" id="servicios">
+    <div class="container">
+        <span class="eyebrow reveal">Servicios</span>
+        <h2 class="section-h reveal">Todo lo que necesitas<br>para tener el control</h2>
+        <p class="section-p reveal">Servicios diseñados para el tamaño real de tu empresa, no para grandes corporaciones.</p>
+
+        <div class="services-grid">
+            <div class="service-card reveal" style="--gradient-color:#3B82F6;">
+                <div class="service-icon" style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.15);">📊</div>
+                <h3>Controlling Mensual</h3>
+                <p>Analizamos tus cuentas cada mes, detectamos desviaciones y te presentamos un informe claro con acciones concretas.</p>
+                <span class="service-tag" style="background:rgba(37,99,235,0.08);color:var(--accent-soft);border:1px solid rgba(37,99,235,0.15);">Recurrente</span>
+            </div>
+            <div class="service-card reveal" style="--gradient-color:#10B981;">
+                <div class="service-icon" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.15);">💸</div>
+                <h3>Gestión de Tesorería</h3>
+                <p>Previsión de cash a 13 semanas. Sabemos antes que tú si vas a tener un problema de liquidez — y te lo resolvemos.</p>
+                <span class="service-tag" style="background:rgba(16,185,129,0.08);color:var(--green-soft);border:1px solid rgba(16,185,129,0.15);">Proactivo</span>
+            </div>
+            <div class="service-card reveal" style="--gradient-color:#8B5CF6;">
+                <div class="service-icon" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.15);">🎯</div>
+                <h3>Presupuestos y Forecast</h3>
+                <p>Construimos el presupuesto anual contigo y lo actualizamos trimestralmente para que nunca pierdas el rumbo.</p>
+                <span class="service-tag" style="background:rgba(139,92,246,0.08);color:#A78BFA;border:1px solid rgba(139,92,246,0.15);">Estratégico</span>
+            </div>
+            <div class="service-card reveal" style="--gradient-color:#F59E0B;">
+                <div class="service-icon" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.15);">🔍</div>
+                <h3>Auditoría de Costes</h3>
+                <p>Radiografiamos todos tus gastos. Encontramos licencias duplicadas, suscripciones olvidadas y proveedores caros.</p>
+                <span class="service-tag" style="background:rgba(245,158,11,0.08);color:#FCD34D;border:1px solid rgba(245,158,11,0.15);">Bajo demanda</span>
+            </div>
+            <div class="service-card reveal" style="--gradient-color:#EC4899;">
+                <div class="service-icon" style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.15);">📈</div>
+                <h3>Dashboard Financiero</h3>
+                <p>Tu cuadro de mando en tiempo real. KPIs a medida, alertas automáticas y acceso desde cualquier dispositivo.</p>
+                <span class="service-tag" style="background:rgba(236,72,153,0.08);color:#F9A8D4;border:1px solid rgba(236,72,153,0.15);">Siempre activo</span>
+            </div>
+            <div class="service-card reveal" style="--gradient-color:#06B6D4;">
+                <div class="service-icon" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);">🤝</div>
+                <h3>CFO Externo</h3>
+                <p>Para empresas que necesitan un perfil financiero senior sin el coste de una contratación. Tu equipo, nuestra experiencia.</p>
+                <span class="service-tag" style="background:rgba(6,182,212,0.08);color:#67E8F9;border:1px solid rgba(6,182,212,0.15);">Enterprise</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="section" id="como-funciona" style="padding-top:0;">
+    <div class="container">
+        <span class="eyebrow reveal">Cómo funciona</span>
+        <h2 class="section-h reveal">Del caos financiero<br>al control total</h2>
+        <p class="section-p reveal">Sin CFO, sin meses de implantación.<br>Solo claridad desde el primer día.</p>
+        <div class="how-layout">
+            <div class="steps">
+                <div class="step active reveal" onclick="setStep(this)">
+                    <div class="step-n">01</div>
+                    <div><h3>Diagnóstico en 48h</h3><p>Conectamos con tus datos existentes — ERP, banca, Excel — y localizamos las principales fugas y oportunidades de mejora.</p></div>
+                </div>
+                <div class="step reveal" onclick="setStep(this)">
+                    <div class="step-n">02</div>
+                    <div><h3>Dashboard a medida</h3><p>Tu cuadro de mando financiero en tiempo real: cash, márgenes, desviaciones y alertas automáticas.</p></div>
+                </div>
+                <div class="step reveal" onclick="setStep(this)">
+                    <div class="step-n">03</div>
+                    <div><h3>Reunión mensual de control</h3><p>Cada mes revisamos los números contigo, priorizamos acciones y ajustamos el rumbo. Tu copiloto financiero.</p></div>
+                </div>
+            </div>
+            <div class="dash-mockup reveal" style="position:relative;">
+                <div class="dash-header"><span class="dash-title">Dashboard Financiero</span><span class="live-badge"><span class="live-dot"></span>En vivo</span></div>
+                <div class="kpi-row">
+                    <div class="kpi"><div class="kpi-label">Cash</div><div class="kpi-val" style="color:var(--green-soft);">142K</div></div>
+                    <div class="kpi"><div class="kpi-label">Margen</div><div class="kpi-val" style="color:var(--accent-soft);">23%</div></div>
+                    <div class="kpi"><div class="kpi-label">Runway</div><div class="kpi-val">8 m.</div></div>
+                </div>
+                <div class="chart-label">Ingresos mensuales</div>
+                <div class="bar-chart">
+                    <div class="bar" style="height:45%"><span class="bar-l">Ago</span></div>
+                    <div class="bar" style="height:55%"><span class="bar-l">Sep</span></div>
+                    <div class="bar" style="height:48%"><span class="bar-l">Oct</span></div>
+                    <div class="bar" style="height:65%"><span class="bar-l">Nov</span></div>
+                    <div class="bar" style="height:72%"><span class="bar-l">Dic</span></div>
+                    <div class="bar highlight" style="height:80%"><span class="bar-l">Ene</span></div>
+                </div>
+                <div class="dash-alert">
+                    <div class="alert-icon">↗</div>
+                    <div><div class="alert-text-main">Alerta detectada</div><div class="alert-text-sub">Coste de licencias +18% vs mes anterior</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ QUIENES SOMOS ══ -->
+<section class="section" id="nosotros" style="padding-top:0;">
+    <div class="container">
+        <span class="eyebrow reveal">Quiénes somos</span>
+        <h2 class="section-h reveal">Controllers que saben<br>lo que es gestionar</h2>
+        <p class="section-p reveal">No somos consultores que dan teoría. Somos financieros que han trabajado en empresas reales y saben dónde duele.</p>
+
+        <div class="about-layout">
+            <div>
+                <div class="about-values">
+                    <div class="value-item reveal">
+                        <div class="value-icon">🎯</div>
+                        <div>
+                            <h4>Orientados a resultados</h4>
+                            <p>Medimos nuestro éxito por el tuyo. Sin ahorro real, sin éxito. Cada recomendación tiene un impacto calculado en euros.</p>
+                        </div>
+                    </div>
+                    <div class="value-item reveal">
+                        <div class="value-icon">🔒</div>
+                        <div>
+                            <h4>Confidencialidad absoluta</h4>
+                            <p>Firmamos NDA con todos los clientes. Tus datos financieros son tu ventaja competitiva — los tratamos como tal.</p>
+                        </div>
+                    </div>
+                    <div class="value-item reveal">
+                        <div class="value-icon">⚡</div>
+                        <div>
+                            <h4>Velocidad y claridad</h4>
+                            <p>Sin reportes de 80 páginas. Información accionable en el tiempo que necesitas para tomar decisiones.</p>
+                        </div>
+                    </div>
+                    <div class="value-item reveal">
+                        <div class="value-icon">🤝</div>
+                        <div>
+                            <h4>Relación a largo plazo</h4>
+                            <p>No hacemos proyectos puntuales. Somos parte de tu equipo. Cuanto más nos conocemos, más valor generamos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-visual reveal">
+                <div class="team-card" style="position:relative;overflow:hidden;">
+                    <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:1.25rem;">El equipo</div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-avatar" style="background:linear-gradient(135deg,#2563EB,#7C3AED);">AV</div>
+                            <div class="team-name">Álvaro Vidal</div>
+                            <div class="team-role">Founder & CFO</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar" style="background:linear-gradient(135deg,#059669,#0284C7);">MG</div>
+                            <div class="team-name">Marta García</div>
+                            <div class="team-role">Head of Controlling</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar" style="background:linear-gradient(135deg,#D97706,#DC2626);">JP</div>
+                            <div class="team-name">Jordi Puig</div>
+                            <div class="team-role">Data & Analytics</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar" style="background:linear-gradient(135deg,#7C3AED,#EC4899);">LM</div>
+                            <div class="team-name">Laura Mas</div>
+                            <div class="team-role">Treasury Specialist</div>
+                        </div>
+                    </div>
+                    <div class="team-stat-row">
+                        <div class="team-stat">
+                            <div class="team-stat-n">12+</div>
+                            <div class="team-stat-l">Años exp.</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-n">80+</div>
+                            <div class="team-stat-l">Clientes</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-n">€4M</div>
+                            <div class="team-stat-l">Ahorrado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="section" id="precios" style="padding-top:0;">
+    <div class="container">
+        <span class="eyebrow reveal">Precios</span>
+        <h2 class="section-h reveal">Transparente<br>desde el primer día</h2>
+        <p class="section-p reveal">Sin letra pequeña. Sin setup fees.<br>Cancela cuando quieras.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <div class="plan-name">Básico</div>
+                <div class="plan-price"><sup>€</sup>990</div>
+                <div class="plan-period">al mes + IVA</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="ck">✓</span>Dashboard financiero básico</li>
+                    <li><span class="ck">✓</span>Reporting mensual automático</li>
+                    <li><span class="ck">✓</span>Alertas por email</li>
+                    <li><span class="ck">✓</span>1 reunión mensual (1h)</li>
+                    <li><span class="ck">✓</span>Soporte por chat</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline" style="width:100%;height:44px;">Empezar</a>
+            </div>
+            <div class="pricing-card featured reveal">
+                <div class="featured-badge">Más popular</div>
+                <div class="plan-name">Pro</div>
+                <div class="plan-price"><sup>€</sup>1.990</div>
+                <div class="plan-period">al mes + IVA</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="ck">✓</span>Todo lo de Básico</li>
+                    <li><span class="ck">✓</span>Dashboard avanzado + KPIs a medida</li>
+                    <li><span class="ck">✓</span>Previsión de tesorería (13 semanas)</li>
+                    <li><span class="ck">✓</span>Análisis de márgenes por canal</li>
+                    <li><span class="ck">✓</span>2 reuniones mensuales</li>
+                    <li><span class="ck">✓</span>Soporte prioritario (&lt;4h)</li>
+                </ul>
+                <a href="#contacto" class="btn" style="width:100%;height:44px;">Empezar</a>
+            </div>
+            <div class="pricing-card reveal">
+                <div class="plan-name">Enterprise</div>
+                <div class="plan-price" style="font-size:1.75rem;padding-top:0.5rem;">A medida</div>
+                <div class="plan-period">para grupos y holding</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="ck">✓</span>Todo lo de Pro</li>
+                    <li><span class="ck">✓</span>Consolidación multi-empresa</li>
+                    <li><span class="ck">✓</span>Integración con ERP propio</li>
+                    <li><span class="ck">✓</span>Controller dedicado</li>
+                    <li><span class="ck">✓</span>SLA garantizado</li>
+                    <li><span class="ck">✓</span>Reuniones semanales</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline" style="width:100%;height:44px;">Hablar con ventas</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="section" id="clientes" style="padding-top:0;">
+    <div class="container">
+        <span class="eyebrow reveal">Clientes</span>
+        <h2 class="section-h reveal">Empresas que ya<br>respiran mejor</h2>
+        <div class="t-grid">
+            <div class="t-card reveal">
+                <div class="t-stars">★★★★★</div>
+                <p class="t-quote">"En dos meses detectamos 34.000€ anuales en licencias duplicadas y suscripciones olvidadas. No me lo podía creer."</p>
+                <div class="t-author">
+                    <div class="t-avatar">MR</div>
+                    <div><div class="t-name">Marc Ribera</div><div class="t-role">CEO · Agencia de Marketing, 2,1M€</div></div>
+                </div>
+            </div>
+            <div class="t-card reveal">
+                <div class="t-stars">★★★★★</div>
+                <p class="t-quote">"Antes dedicaba 2 días al mes a armar el reporte del consejo. Ahora lo tengo automático y me centro en crecer."</p>
+                <div class="t-author">
+                    <div class="t-avatar">LP</div>
+                    <div><div class="t-name">Laura Puig</div><div class="t-role">CFO · E-commerce, 4,5M€</div></div>
+                </div>
+            </div>
+            <div class="t-card reveal">
+                <div class="t-stars">★★★★★</div>
+                <p class="t-quote">"La previsión de tesorería nos salvó de un bache de liquidez. Actuamos con 6 semanas de antelación sin estrés."</p>
+                <div class="t-author">
+                    <div class="t-avatar">AS</div>
+                    <div><div class="t-name">Àlex Soler</div><div class="t-role">Fundador · SaaS B2B, 1,8M€ ARR</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section class="section" id="blog" style="padding-top:0;">
+    <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:0;">
+            <div>
+                <span class="eyebrow reveal">Blog</span>
+                <h2 class="section-h reveal" style="max-width:100%;margin-bottom:0;">Finanzas sin<br>letra pequeña</h2>
+            </div>
+            <a href="#blog" class="btn btn-ghost reveal" style="height:40px;margin-bottom:0.5rem;">Ver todos →</a>
+        </div>
+        <div class="blog-grid" style="margin-top:3rem;">
+            <a href="#" class="blog-card reveal">
+                <div class="blog-thumb" style="background:linear-gradient(135deg,#0C1628,#101E35);">
+                    <span style="position:relative;z-index:1;">📊</span>
+                    <span class="blog-category" style="background:rgba(37,99,235,0.15);color:var(--accent-soft);border:1px solid rgba(37,99,235,0.2);">Controlling</span>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">12 Feb 2025 <span>·</span> 5 min</div>
+                    <div class="blog-title">Cómo construir un dashboard financiero que tu equipo realmente use</div>
+                    <div class="blog-excerpt">La mayoría de dashboards mueren a los 3 meses. Te contamos qué los mata y cómo hacer uno que sobreviva.</div>
+                    <div class="blog-cta">Leer artículo <span>→</span></div>
+                </div>
+            </a>
+            <a href="#" class="blog-card reveal">
+                <div class="blog-thumb" style="background:linear-gradient(135deg,#0A1F15,#0C2A1A);">
+                    <span style="position:relative;z-index:1;">💸</span>
+                    <span class="blog-category" style="background:rgba(16,185,129,0.12);color:var(--green-soft);border:1px solid rgba(16,185,129,0.18);">Tesorería</span>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">28 Ene 2025 <span>·</span> 7 min</div>
+                    <div class="blog-title">Previsión de tesorería a 13 semanas: la herramienta que salva empresas</div>
+                    <div class="blog-excerpt">El 82% de las quiebras son por problemas de liquidez evitables. Este método te da 3 meses de antelación.</div>
+                    <div class="blog-cta">Leer artículo <span>→</span></div>
+                </div>
+            </a>
+            <a href="#" class="blog-card reveal">
+                <div class="blog-thumb" style="background:linear-gradient(135deg,#1A0A2E,#1F1035);">
+                    <span style="position:relative;z-index:1;">🔍</span>
+                    <span class="blog-category" style="background:rgba(139,92,246,0.1);color:#A78BFA;border:1px solid rgba(139,92,246,0.18);">Costes</span>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">15 Ene 2025 <span>·</span> 4 min</div>
+                    <div class="blog-title">Las 7 fugas de dinero más frecuentes en empresas de 1 a 5 millones</div>
+                    <div class="blog-excerpt">Las hemos visto todas. Licencias duplicadas, contratos automáticos, márgenes que nadie revisa. Aquí están.</div>
+                    <div class="blog-cta">Leer artículo <span>→</span></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section" id="faq" style="padding-top:0;">
+    <div class="container">
+        <span class="eyebrow reveal" style="display:block;text-align:center;">FAQ</span>
+        <h2 class="section-h reveal" style="text-align:center;max-width:100%;">Preguntas frecuentes</h2>
+        <div class="faq-wrap">
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="fa1">¿Necesito cambiar mi software contable?<span class="faq-plus">+</span></button>
+                <div class="faq-a" id="fa1" role="region">No. Clavis se conecta a lo que ya tienes: Holded, A3, Sage, Odoo, Excel... Si generas datos, los aprovechamos. No necesitas cambiar nada.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="fa2">¿Cuánto tiempo tarda en estar operativo?<span class="faq-plus">+</span></button>
+                <div class="faq-a" id="fa2" role="region">El diagnóstico inicial está listo en 48 horas. El dashboard completo y la primera reunión de control se completan en la primera semana. Sin meses de implantación.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="fa3">¿Qué diferencia a Clavis de contratar un controller interno?<span class="faq-plus">+</span></button>
+                <div class="faq-a" id="fa3" role="region">Un controller junior cuesta entre 35.000€ y 50.000€ brutos/año, más seguridad social, formación y herramientas. Con Clavis tienes un equipo senior por una fracción del precio, sin curva de aprendizaje.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="fa4">¿Mis datos están seguros?<span class="faq-plus">+</span></button>
+                <div class="faq-a" id="fa4" role="region">Sí. Cumplimos RGPD, firmamos NDA con todos los clientes y los datos se almacenan en servidores europeos cifrados. Nunca compartimos información con terceros.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="fa5">¿Puedo cancelar en cualquier momento?<span class="faq-plus">+</span></button>
+                <div class="faq-a" id="fa5" role="region">Sí, con 30 días de preaviso. Sin penalizaciones, sin permanencia mínima. Confiamos en que te quedarás porque los resultados hablan por sí solos.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contacto" class="contact-section">
+    <div class="container">
+        <div class="contact-layout">
+
+            <!-- Left: info -->
+            <div class="contact-info">
+                <span class="eyebrow reveal">Contacto</span>
+                <h2 class="reveal">¿Listo para<br>tener el control?</h2>
+                <p class="reveal">Cuéntanos sobre tu empresa. En 24h te respondemos con un diagnóstico inicial gratuito.</p>
+
+                <div class="contact-detail reveal">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <div class="contact-detail-text">traderargentino21@gmail.com</div>
+                        <div class="contact-detail-sub">Respondemos en menos de 24h</div>
+                    </div>
+                </div>
+                <div class="contact-detail reveal">
+                    <div class="contact-icon">📅</div>
+                    <div>
+                        <div class="contact-detail-text">Llamada de diagnóstico gratuita</div>
+                        <div class="contact-detail-sub">30 minutos, sin compromiso</div>
+                    </div>
+                </div>
+                <div class="contact-detail reveal">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div class="contact-detail-text">Barcelona · Madrid · Remoto</div>
+                        <div class="contact-detail-sub">Trabajamos con toda España</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="contact-card reveal">
+                <div id="contact-form">
+                    <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-name">Nombre *</label>
+                            <input type="text" id="f-name" name="name" class="field-input" placeholder="Marc Ribera"
+                                required aria-invalid="false" aria-describedby="err-name">
+                            <span id="err-name" class="field-error hidden" role="alert">Ingresa tu nombre</span>
+                        </div>
+                        <div class="field">
+                            <label for="f-email">Email *</label>
+                            <input type="email" id="f-email" name="email" class="field-input" placeholder="marc@empresa.com"
+                                required aria-invalid="false" aria-describedby="err-email">
+                            <span id="err-email" class="field-error hidden" role="alert">Email inválido</span>
+                        </div>
+                        <div class="field">
+                            <label for="f-phone">Teléfono</label>
+                            <input type="tel" id="f-phone" name="phone" class="field-input" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="field">
+                            <label for="f-revenue">Facturación anual</label>
+                            <select id="f-revenue" name="facturacion" class="field-input">
+                                <option value="">Seleccionar...</option>
+                                <option>Menos de 500.000€</option>
+                                <option>500.000€ – 2M€</option>
+                                <option>2M€ – 10M€</option>
+                                <option>Más de 10M€</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-service">Servicio de interés</label>
+                            <select id="f-service" name="servicio" class="field-input">
+                                <option value="">Seleccionar...</option>
+                                <option>Controlling Mensual</option>
+                                <option>Gestión de Tesorería</option>
+                                <option>Presupuestos y Forecast</option>
+                                <option>Auditoría de Costes</option>
+                                <option>Dashboard Financiero</option>
+                                <option>CFO Externo</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-urgency">¿Cuándo necesitas empezar?</label>
+                            <select id="f-urgency" name="urgencia" class="field-input">
+                                <option value="">Seleccionar...</option>
+                                <option>Inmediatamente</option>
+                                <option>En el próximo mes</option>
+                                <option>En 2-3 meses</option>
+                                <option>Estoy explorando opciones</option>
+                            </select>
+                        </div>
+                        <div class="field span-2">
+                            <label for="f-message">¿Cuál es tu principal reto financiero?</label>
+                            <textarea id="f-message" name="message" class="field-input" rows="3"
+                                placeholder="No tengo visibilidad sobre mis márgenes..."></textarea>
+                        </div>
+                    </div>
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <div style="margin-top:1.25rem;">
+                        <button id="submit-btn" class="btn btn-lg" type="button" onclick="submitForm()" style="width:100%;">
+                            <span id="btn-text">Enviar y agendar llamada →</span>
+                            <span id="btn-spinner" class="spinner hidden"></span>
+                        </button>
+                    </div>
+                    <p class="form-privacy">🔒 Tus datos son confidenciales. Sin spam, sin compromisos.</p>
+                </div>
+                <div class="form-success" id="form-success">
+                    <div class="success-icon">✓</div>
+                    <h3>¡Recibido!</h3>
+                    <p>Te contactaremos en menos de 24h.<br>Revisa también tu bandeja de spam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo" style="margin-bottom:0;">
+                    <div class="nav-logo-mark" style="width:26px;height:26px;border-radius:7px;">
+                        <svg width="13" height="13" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    Clavis
+                </a>
+                <p>Control financiero sencillo para empresas que quieren crecer sin sorpresas.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Controlling Mensual</a></li>
+                    <li><a href="#servicios">Gestión de Tesorería</a></li>
+                    <li><a href="#servicios">Presupuestos y Forecast</a></li>
+                    <li><a href="#servicios">Auditoría de Costes</a></li>
+                    <li><a href="#servicios">CFO Externo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#nosotros">Quiénes somos</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos de uso</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="mailto:traderargentino21@gmail.com">hola@clavis.es</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 Clavis Financial S.L. — CIF B-XXXXXXXX — Todos los derechos reservados.</p>
+            <div class="social-links">
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/company/clavis-controlling" target="_blank" rel="noopener noreferrer"
+                    class="social-link linkedin" aria-label="Clavis en LinkedIn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/clavis.controlling" target="_blank" rel="noopener noreferrer"
+                    class="social-link instagram" aria-label="Clavis en Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </a>
+                <!-- TikTok -->
+                <a href="https://tiktok.com/@clavis.controlling" target="_blank" rel="noopener noreferrer"
+                    class="social-link tiktok" aria-label="Clavis en TikTok">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ─────────────────────────────────────────────
+    // ⚙️  FORMSPREE — reemplaza TU_FORM_ID_AQUI
+    // 1. formspree.io → nueva cuenta → nuevo form
+    // 2. Email: traderargentino21@gmail.com
+    // 3. Copia el ID y pégalo aquí abajo
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/TU_FORM_ID_AQUI';
+    // ─────────────────────────────────────────────
+
+    // ── SLIDER ──
+    const slider   = document.getElementById('revenue');
+    const sliderVl = document.getElementById('revenue-val');
+    slider.addEventListener('input', e => {
+        const v = Number(e.target.value);
+        sliderVl.textContent = v.toLocaleString('es-ES') + ' €';
+        e.target.setAttribute('aria-valuenow', v);
+        e.target.setAttribute('aria-valuetext', v.toLocaleString('es-ES') + ' euros');
+    });
+
+    // ── CALCULATOR ──
+    function showStep(id) {
+        ['step-1','step-2','step-results'].forEach(s => document.getElementById(s).classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+    }
+    const nextStep  = () => showStep('step-2');
+    const prevStep  = () => showStep('step-1');
+    const resetCalc = () => showStep('step-1');
+
+    function calculate(factor) {
+        const rev         = Number(slider.value);
+        const ahorro      = Math.round(rev * factor * 0.85);
+        const monthlyBurn = (rev / 12) * 0.75;
+        const runway      = Math.max(1, Math.round((ahorro / 12) / monthlyBurn * 12));
+        const margen      = (factor * 50).toFixed(1);
+        const tiempo      = Math.round(factor * 100 + 4);
+        document.getElementById('res-ahorro').textContent = ahorro.toLocaleString('es-ES') + ' €';
+        document.getElementById('res-runway').textContent = '+' + runway + ' meses';
+        document.getElementById('res-margen').textContent = '+' + margen + '%';
+        document.getElementById('res-tiempo').textContent = '+' + tiempo + 'h';
+        showStep('step-results');
+    }
+
+    // ── STEP TABS ──
+    function setStep(el) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    // ── FAQ ──
+    function toggleFaq(btn) {
+        const item   = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+        document.querySelectorAll('.faq-q').forEach(q => q.setAttribute('aria-expanded','false'));
+        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    }
+
+    // ── FORM ──
+    function fieldError(id, errId, show, msg='') {
+        const f = document.getElementById(id);
+        const e = document.getElementById(errId);
+        f.setAttribute('aria-invalid', show ? 'true' : 'false');
+        show ? (e.textContent = msg, e.classList.remove('hidden')) : e.classList.add('hidden');
+    }
+    function setStatus(type, msg) {
+        const el = document.getElementById('form-status');
+        if (!type) { el.style.display = 'none'; return; }
+        el.className = 'form-status ' + type;
+        el.style.display = 'flex';
+        el.innerHTML = type === 'loading' ? `<div class="spinner"></div>${msg}` : `⚠ ${msg}`;
+    }
+    function validate() {
+        let ok = true;
+        const name  = document.getElementById('f-name').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        if (!name)  { fieldError('f-name','err-name',true,'Ingresa tu nombre'); ok=false; }
+        else fieldError('f-name','err-name',false);
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            fieldError('f-email','err-email',true,'Ingresa un email válido'); ok=false;
+        } else fieldError('f-email','err-email',false);
+        return ok;
+    }
+    async function submitForm() {
+        setStatus(null);
+        if (!validate()) return;
+        const data = {
+            name:        document.getElementById('f-name').value.trim(),
+            email:       document.getElementById('f-email').value.trim(),
+            phone:       document.getElementById('f-phone').value.trim(),
+            facturacion: document.getElementById('f-revenue').value,
+            servicio:    document.getElementById('f-service').value,
+            urgencia:    document.getElementById('f-urgency').value,
+            message:     document.getElementById('f-message').value.trim(),
+        };
+        const btn = document.getElementById('submit-btn');
+        const txt = document.getElementById('btn-text');
+        const spn = document.getElementById('btn-spinner');
+        btn.disabled = true; txt.textContent = 'Enviando...'; spn.classList.remove('hidden');
+        setStatus('loading', 'Enviando tu solicitud...');
+        try {
+            const res  = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            const json = await res.json();
+            if (res.ok) {
+                document.getElementById('contact-form').style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            } else {
+                const msg = json.errors ? json.errors.map(e=>e.message).join(', ') : 'Error al enviar. Inténtalo de nuevo.';
+                setStatus('error', msg);
+                btn.disabled = false; txt.textContent = 'Enviar y agendar llamada →'; spn.classList.add('hidden');
+            }
+        } catch {
+            setStatus('error', 'Sin conexión. Comprueba tu red e inténtalo de nuevo.');
+            btn.disabled = false; txt.textContent = 'Enviar y agendar llamada →'; spn.classList.add('hidden');
+        }
+    }
+
+    // ── SCROLL REVEAL con stagger ──
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const siblings = [...(e.target.parentElement?.querySelectorAll('.reveal') || [])];
+                const idx = siblings.indexOf(e.target);
+                setTimeout(() => e.target.classList.add('visible'), Math.min(idx * 65, 300));
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── NAV scroll effect ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        nav.style.background = window.scrollY > 40
+            ? 'rgba(2,4,10,0.92)' : 'rgba(2,4,10,0.72)';
+    }, { passive: true });
+</script>
+</body>
+</html>
